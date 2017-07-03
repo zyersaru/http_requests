@@ -8,15 +8,18 @@ function getAndPrintHTML () {
   };
 
   /* Add your code here */
-https.get(requestOptions, function (response) {
-  response.on('data', function (data) {
-    data += data.length;
-    console.log(data + '\n');
-  });
+  https.get(requestOptions, function (response) {
+    var buff = '';
+    response.on('data', function (data) {
+      // data += data.length;
+      buff += data;
+      // console.log(data + '\n');
+    });
 
-  response.on('end', function () {
+    response.on('end', function () {
+      console.log(buff);
+    });
   });
-});
 }
 
 getAndPrintHTML();
